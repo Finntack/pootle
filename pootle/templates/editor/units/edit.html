@@ -157,7 +157,7 @@
             {% endif %}
 
             {{ form.target_f }}
-
+            <input type="hidden" name="suggest_quality" value="{{ unit.suggest_quality }}" />
             {% if unit.submitted_by and unit.submitted_on %}
             <div class="unit-meta">
               <time class="js-relative-date"

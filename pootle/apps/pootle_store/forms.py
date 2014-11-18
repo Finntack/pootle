@@ -212,7 +212,7 @@ def unit_form_factory(language, snplurals=None, request=None):
     class UnitForm(forms.ModelForm):
         class Meta:
             model = Unit
-            fields = ("id", "index", "target_f", "state")
+            fields = ("id", "index", "target_f", "state", "suggest_quality")
 
         id = forms.IntegerField(required=False)
         target_f = MultiStringFormField(
