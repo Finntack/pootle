@@ -614,6 +614,7 @@
     text = selector.data('entity') || selector.text();
 
     element = $(PTL.editor.focused);
+    $('[name=suggest_quality]').val(selector.parent().data('quality'));
 
     if (action === "overwrite") {
       element.val(text).trigger('input');
@@ -1809,7 +1810,7 @@
   filterTMResults: function (results) {
     // FIXME: this just retrieves the first four results
     // we could limit based on a threshold too.
-    var source = $('.translate-focus .translation-text').first().text(); //$("[id^=id_source_f_]").first().val(),
+    var source = $('.translate-focus .translation-text').first().text(), //$("[id^=id_source_f_]").first().val(),
         filtered = [],
         quality;
 
@@ -1821,6 +1822,7 @@
       // '%s' will be replaced by a number, and you should keep the extra
       // '%' symbol to denote a percentage is being used.
       results[i].qTitle = interpolate(gettext('%s% match'), [quality]);
+      results[i].qQuality = quality;
       filtered.push(results[i]);
     }
 

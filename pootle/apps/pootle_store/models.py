@@ -318,6 +318,7 @@ class Unit(models.Model, base.TranslationUnit):
         db_index=True,
         blank=True,
     )
+    suggest_quality = models.SmallIntegerField(db_index=False, default=0)
 
     # Metadata
     creation_time = models.DateTimeField(
