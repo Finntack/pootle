@@ -31,23 +31,23 @@ from translate.search.lshtein import LevenshteinComparer
 
 
 class Command(ModifiedSinceMixin, PootleCommand):
-	option_list = PootleCommand.option_list 
-	help = "Auto translate 100% matches form translation memory"
+    option_list = PootleCommand.option_list
+    help = "Auto translate 100% matches form translation memory"
 
-	def handle_all_stores(self, translation_project, **options):
-		
-		for trans_file in translation_project.get_children():
-			for unit in trans_file.units:
-				criteria = {
-					'target_lang': unit.store.translation_project.language,
-					'source_lang': unit.store.translation_project.project.source_language,
-					'source_length__eq': unit.source_length,
-					'target_length__gt': 1,
-				}
+    def handle_all_stores(self, translation_project, **options):
 
-				tmunits = TMUnit.objects.filter(**criteria)
+        for trans_file in translation_project.get_children():
+            for unit in trans_file.units:
+                criteria = {
+                'target_lang': unit.store.translation_project.language,
+                'source_lang': unit.store.translation_project.project.source_language,
+                'source_length__eq': unit.source_length,
+                'target_length__gt': 1,
+                }
 
-				if len(tmunits) == 1:
-					unit.target = tmunits[0].target
-					unit.save()
+                tmunits = TMUnit.objects.filter(**criteria)
+
+                if len(tmunits) == 1:
+                    unit.target = tmunits[0].target
+                    unit.save()
 
