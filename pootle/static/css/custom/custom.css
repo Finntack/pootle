@@ -6,3 +6,19 @@
  * directory, for example:
  *   url('custom/image.png') to refer to /css/custom/image.png
  */
+
+table.ft.statistics td {
+	border-top: black 1px solid;
+	padding-right: 18px;
+	padding-left: 5px;
+}
+
+/*  Define the background color for all the ODD table columns  */
+table.ft tr td:nth-child(odd){
+	background: #EFEFEF;
+}
+
+/*  Define the background color for all the EVEN table columns  */
+table.ft tr td:nth-child(even){
+	background: #CFCFCF;
+}
