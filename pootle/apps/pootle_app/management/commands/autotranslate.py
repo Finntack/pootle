@@ -27,8 +27,6 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'pootle.settings'
 
 from pootle_app.management.commands import PootleCommand, ModifiedSinceMixin
 from pootle_store.models import TMUnit
-from translate.search.lshtein import LevenshteinComparer
-
 
 class Command(ModifiedSinceMixin, PootleCommand):
     option_list = PootleCommand.option_list
